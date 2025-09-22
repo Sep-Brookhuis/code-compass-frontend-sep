@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../lib/api";
+import "./login.css";
 
 function LoginForm() {
   const [loading, setLoading] = useState(false);
@@ -22,7 +23,7 @@ function LoginForm() {
             navigate("/home", { replace: true });
             return;
     }
-  setError("Login failed.");
+  setError("Login failed");
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
@@ -30,17 +31,50 @@ function LoginForm() {
     }
   }
 
-  return (
-    <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email:</label>
-      <input type="email" name="email" required disabled={loading} />
-        <label htmlFor="password">Password:</label>
-      <input type="password" name="password" required disabled={loading} />
-      <button type="submit" disabled={loading}>
-        {loading ? "Bezig..." : "Login"}
-      </button>
-      {error && <p style={{ color: "crimson" }}>{error}</p>}
-    </form>
+ return (
+    <div className="page-wrap">
+      <div className="card">
+        <h1 className="title">Blitz Code Compass</h1>
+
+        <form onSubmit={handleSubmit} className="form">
+          <div>
+            <label htmlFor="email" className="label">Email</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              required
+              disabled={loading}
+              className="input"
+              autoComplete="email"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="password" className="label">Password</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              required
+              disabled={loading}
+              className="input"
+              autoComplete="current-password"
+            />
+          </div>
+
+          <button type="submit" disabled={loading} className="btn btn-primary">
+            {loading ? "Bezig..." : "Login"}
+          </button>
+
+          {error && (
+            <p className="error" role="alert" aria-live="polite">
+              {error}
+            </p>
+          )}
+        </form>
+      </div>
+    </div>
   );
 }
 

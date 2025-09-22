@@ -1,0 +1,15 @@
+.page-wrap {
+  @apply min-h-screen grid place-items-center bg-gray-50 px-4;
+}
+
+.card {
+  @apply w-full max-w-md bg-white/70 backdrop-blur rounded-2xl p-8 shadow-lg border border-gray-200;
+}
+
+.title {
+  @apply text-2xl font-semibold text-gray-900;
+}
+
+.subtitle {
+  @apply mt-2 text-sm text-gray-500;
+}
