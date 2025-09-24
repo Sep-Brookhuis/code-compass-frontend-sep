@@ -1,8 +1,12 @@
 import HomePageComponent from "../components/HomePageComponent.tsx";
+import LogoutComponent from "../components/LogoutComponent.tsx";
 
 function HomePage() {
     return (
-        <HomePageComponent></HomePageComponent>
+        <div>
+            <LogoutComponent></LogoutComponent>
+            <HomePageComponent></HomePageComponent>
+        </div>
     )
 }
 

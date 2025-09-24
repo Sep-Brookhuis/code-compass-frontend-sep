@@ -1,8 +1,12 @@
 import CreateUserPageComponent from "../components//CreateUserPageComponent.tsx";
+import LogoutComponent from "../components/LogoutComponent.tsx";
 
 function CreateUserPage() {
     return (
-        <CreateUserPageComponent></CreateUserPageComponent>
+        <div>
+            <LogoutComponent></LogoutComponent>
+            <CreateUserPageComponent></CreateUserPageComponent>
+        </div>
     )
 }
 
