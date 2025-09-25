@@ -1,0 +1,16 @@
+.logout-btn {
+  background-color: #6366f1; /* softer indigo */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.logout-btn:hover {
+  background-color: #4f46e5; /* slightly darker indigo on hover */
+}

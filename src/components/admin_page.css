@@ -13,3 +13,65 @@
 .subtitle {
   @apply mt-2 text-sm text-gray-500;
 }
+
+.input,
+select.input {
+  @apply w-full block mx-auto px-4 py-2 rounded-xl border border-gray-300 bg-white text-gray-900;
+  @apply focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+select.input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.radio-group {
+  @apply flex justify-center gap-4 mt-2;
+}
+
+.radio-option {
+  @apply flex items-center cursor-pointer;
+}
+
+.radio-option input[type="radio"] {
+  display: none; /* hide default circle */
+}
+
+.radio-option span {
+  @apply px-4 py-2 rounded-lg border border-gray-300 text-gray-700;
+  @apply transition-colors duration-200;
+}
+
+.radio-option input[type="radio"]:checked + span {
+  @apply bg-indigo-600 text-white border-indigo-600;
+}
+
+.alert {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+
+.alert-success {
+  background: #ecfdf5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+
+.alert-error {
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
