@@ -1,41 +1,31 @@
-// AuthContext.tsx
 import { createContext, useContext, useState } from "react";
 
 type AuthContextType = {
   name: string;
   role: string;
-  loginAsAdmin: () => void;
-  loginAsTrainee: () => void;
-  logout: () => void;
+  login_user: (username: string, userRole: string) => void;
+  logout_user: () => void;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-
+// @ts-ignore
 export function AuthProvider({ children }) {
-  const [name, setName] = useState("sep");
+  const [name, setName] = useState("");
   const [role, setRole] = useState("");
 
-  const loginAsAdmin = () => {
-   console.log("login admin")
-    setName("sep");
-    setRole("admin");
+  const login_user = (username: string, userRole: string) => {
+    setName(username);
+    setRole(userRole);
   };
 
-  const loginAsTrainee = () => {
-    console.log("login trainee")
-      setName("joost");
-    setRole("trainee");
-  };
-
-  const logout = () => {
-   console.log("logout")
+  const logout_user = () => {
     setName("");
     setRole("");
   };
 
   return (
-    <AuthContext.Provider value={{ name, role, loginAsAdmin, loginAsTrainee, logout }}>
+    <AuthContext.Provider value={{ login_user,  logout_user, name, role }}>
       {children}
     </AuthContext.Provider>
   );

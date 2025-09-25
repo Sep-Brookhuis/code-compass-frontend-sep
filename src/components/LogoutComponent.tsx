@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
 import "./logout.css";
 
 function LogoutComponent(){
     const navigate = useNavigate()
+    const { logout_user } = useAuth();
 
     async function logout() {
         const res = await fetch("http://localhost:5000/api/logout", {
@@ -10,6 +12,7 @@ function LogoutComponent(){
             credentials: "include",
         });
         if (res.ok) {
+            logout_user()
             navigate("/login", {replace: true})
         }
     }

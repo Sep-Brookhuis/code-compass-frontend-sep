@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../lib/api";
+import { useAuth } from "../AuthContext";
 import "./login.css";
 
 function LoginForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
+  const { login_user } = useAuth();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -18,9 +20,11 @@ function LoginForm() {
     const password = String(fd.get("password") ?? "");
 
     try {
-        const ok = await login(email, password);
-        if (ok) {
+        const response = await login(email, password);
+        console.log(response)
+        if (response.ok) {
             navigate("/home", { replace: true });
+            login_user(response.user.displayName, response.user.role)
             return;
     }
   setError("Login failed");

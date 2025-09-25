@@ -2,14 +2,14 @@
 import { Navigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
 
+// @ts-ignore
 export default function ProtectedRoute({ children }) {
-  const { name } = useAuth();
-    console.log(name)
-  // If not logged in, redirect to /login
-  if (!name) {
+  const { name, role } = useAuth();
+
+  if (!name || role !== "ADMIN") {
+      console.log(name, role)
     return <Navigate to="/403" replace />;
   }
 
-  // If logged in and role is allowed, render the protected content
   return children;
 }
