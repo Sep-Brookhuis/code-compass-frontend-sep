@@ -11,17 +11,21 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 // @ts-ignore
 export function AuthProvider({ children }) {
-  const [name, setName] = useState("");
-  const [role, setRole] = useState("");
+  const [name, setName] = useState(() => localStorage.getItem("authName") || "");
+  const [role, setRole] = useState(() => localStorage.getItem("authRole") || "");
 
   const login_user = (username: string, userRole: string) => {
     setName(username);
     setRole(userRole);
+    localStorage.setItem("authName", username);
+    localStorage.setItem("authRole", userRole);
   };
 
   const logout_user = () => {
     setName("");
     setRole("");
+    localStorage.removeItem("authName");
+    localStorage.removeItem("authRole");
   };
 
   return (

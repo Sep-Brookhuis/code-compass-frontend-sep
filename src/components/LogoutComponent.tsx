@@ -12,8 +12,11 @@ function LogoutComponent(){
             credentials: "include",
         });
         if (res.ok) {
-            logout_user()
             navigate("/login", {replace: true})
+            setTimeout(() => {
+                logout_user()
+            }, 100)
+        } else {
         }
     }
 
